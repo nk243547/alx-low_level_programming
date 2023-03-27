@@ -15,3 +15,4 @@ mul = a * b;
 
 return (mul);
 }
+

@@ -8,12 +8,11 @@
 */
 int main(void)
 {
-char c;
+int n;
 
-c = '0';
-printf("%c: %d\n", c, _isdigit(c));
-c = 'a';
-printf("%c: %d\n", c, _isdigit(c));
+n = 402;
+printf("n=%d\n", n);
+reset_to_98(&n);
+printf("n=%d\n", n);
 return (0);
 }
- 
