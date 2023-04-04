@@ -1,7 +1,7 @@
 #include "main.h"
 #include <stdio.h>
 /**
- * print_chessboard - Entry point
+* print_chessboard - Entry point
 * @a: array
 * Return: Always 0 (Success)
 */
@@ -14,8 +14,8 @@ for (i = 0; i < 8; i++)
 {
 for (j = 0; j < 8; j++)
 {
-printf("%c ", a[i][j]);
+_putchar("%c ", a[i][j]);
 }
-printf("\n");
+_putchar("\n");
 }
 }
