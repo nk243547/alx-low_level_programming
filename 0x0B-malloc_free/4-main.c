@@ -2,6 +2,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+void free_grid(int **grid, int height);
+
 /**
 * print_grid - prints a grid of integers
 * @grid: the address of the two dimensional grid
@@ -26,22 +28,40 @@ w++;
 }
 printf("\n");
 h++;
-}   
+}
 }
 
 /**
-* main - check the code for ALX School students.
+* alloc_grid - creates a 2D integer grid
+* @width: width of the grid
+* @height: height of the grid
 *
-* Return: Always 0.
+* Return: pointer to the newly created 2D integer grid
+*         or NULL if failure
 */
-int main(void)
+int **alloc_grid(int width, int height)
 {
 int **grid;
+int i;
 
-grid = alloc_grid(6, 4);
+if (width <= 0 || height <= 0)
+return (NULL);
+
+grid = malloc(sizeof(int *) * height);
 if (grid == NULL)
+return (NULL);
+
+for (i = 0; i < height; i++)
 {
-return (1);
+grid[i] = (int *) malloc(sizeof(int) * width);
+if (grid[i] == NULL)
+{
+free_grid(grid, i);
+return (NULL);
+}
+}
+
+return (int **) grid;
 }
 print_grid(grid, 6, 4);
 printf("\n");
@@ -51,3 +71,4 @@ print_grid(grid, 6, 4);
 free_grid(grid, 4);
 return (0);
 }
+
