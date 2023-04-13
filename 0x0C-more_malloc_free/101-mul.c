@@ -37,6 +37,7 @@ char *create_xarray(int size)
 {
 char *array;
 int index;
+
 array = malloc(sizeof(char) * size);
 
 if (array == NULL)
@@ -88,7 +89,7 @@ return (digit);
 
 /**
 * get_prod - Multiplies a string of numbers by a single digit.
-* @prod: The buffer to store the result.
+* @prod: The buffer to store the result. 
 * @mult: The string of numbers.
 * @digit: The single digit.
 * @zeroes: The necessary number of leading zeroes.
@@ -98,7 +99,7 @@ return (digit);
 */
 void get_prod(char *prod, char *mult, int digit, int zeroes)
 {
-int mult_len,num,tens = 0;
+int mult_len, num, tens = 0;
 
 mult_len = find_len(mult) - 1;
 mult += mult_len;
@@ -108,6 +109,7 @@ while (*prod)
 *prod = 'x';
 prod++;
 }
+
 prod--;
 
 while (zeroes--)
@@ -126,7 +128,8 @@ exit(98);
 
 num = (*mult - '0') * digit;
 num += tens;
-*prod = (num % 10) + '0'		tens = num / 10;
+*prod = (num % 10) + '0';
+tens = num / 10;
 }
 
 if (tens)
@@ -181,7 +184,7 @@ if (tens)
 * @argc: An array of pointers to the arguments.
 *
 * Description: If the number of arguments is incorrect or one number
-*             contains non-digits, the function exits with a status of 98.
+*              contains non-digits, the function exits with a status of 98.
 * Return: Always 0.
 */
 int main(int argc, char *argv[])
