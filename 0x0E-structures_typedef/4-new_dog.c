@@ -43,7 +43,7 @@ len = 0;
 while (name[len] != '\0')
 len++;
 len++;
-new_name = malloc(len * sizeof(*owner));
+new_name = malloc(len *sizeof(*owner));
 if (new_name == NULL)
 {
 free(new_dog);
@@ -53,7 +53,7 @@ len = 0;
 while (name[len] != '\0')
 len++;
 len++;
-new_owner = malloc(len * sizeof(*name));
+new_owner = malloc(len *sizeof(*name));
 if (new_owner == NULL)
 {
 free(new_name);
