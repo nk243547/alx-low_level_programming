@@ -1,5 +1,4 @@
 #include "main.h"
-
 #include <stdlib.h>
 
 /**
@@ -11,50 +10,30 @@
 * Return: If the function fails or filename is NULL - 0.
 * O/w - the actual number of bytes the function can read and print.
 */
-
-
 ssize_t read_textfile(const char *filename, size_t letters)
 {
-ssize_t bytes_read = 0;
-char *buffer = NULL;
-int fd;
+ssize_t o, r, w;
+char *buffer;
 
 if (filename == NULL)
 return (0);
 
-fd = open(filename, O_RDONLY);
-if (fd == -1)
-return (0);
-
-buffer = malloc(sizeof(char) * (letters + 1));
+buffer = malloc(sizeof(char) * letters);
 if (buffer == NULL)
-{
-close(fd);
 return (0);
-}
 
-bytes_read = read(fd, buffer, letters);
-if (bytes_read == -1)
+o = open(filename, O_RDONLY);
+r = read(o, buffer, letters);
+w = write(STDOUT_FILENO, buffer, r);
+
+if (o == -1 || r == -1 || w == -1 || w != r)
 {
 free(buffer);
-close(fd);
-return (0);
-}
-
-buffer[bytes_read] = '\0';
-
-if (write(STDOUT_FILENO, buffer, bytes_read) != bytes_read)
-{
-free(buffer);
-close(fd);
 return (0);
 }
 
 free(buffer);
-close(fd);
+close(o);
 
-return (bytes_read);
+return (w);
 }
-
-
-
